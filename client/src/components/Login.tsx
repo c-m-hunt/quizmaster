@@ -31,10 +31,15 @@ export default class Login extends React.PureComponent<Props, State> {
   login() {
     const { email, password } = this.state;
 
-    return client.authenticate({
+    client.authenticate({
       strategy: 'local',
       email, password
-    }).catch((error: Error) => this.setState({ error }));
+    }).catch((error: Error) => {
+      console.log(error)
+      this.setState({ error })
+    }).then((response: any) => {
+      console.log(response)
+    })
   }
 
   signup() {
