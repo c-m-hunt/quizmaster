@@ -44,7 +44,6 @@ export default class Login extends React.PureComponent<Props, State> {
 
   signup() {
     const { email, password } = this.state;
-
     return client.service('users')
       .create({ email, password })
       .then(() => this.login());

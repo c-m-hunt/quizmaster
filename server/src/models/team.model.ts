@@ -9,7 +9,9 @@ export default function (app: Application) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const schema = new Schema({
-    text: { type: String, required: true }
+    name: { type: String, required: true },
+    captainEmail: { type: String, required: true },
+    accessCode: { type: String, required: true }
   }, {
     timestamps: true
   });
