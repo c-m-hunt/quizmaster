@@ -1,5 +1,8 @@
 import React from 'react';
 import client from '../client';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { RootState } from '../reducers';
 
 type Props = {
 
@@ -13,7 +16,7 @@ type State = {
   }
 }
 
-export default class Team extends React.PureComponent<Props, State> {
+class Team extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -64,3 +67,16 @@ export default class Team extends React.PureComponent<Props, State> {
     </main>;
   }
 }
+
+
+
+const mapStateToProps = (state: RootState) => {
+  return {
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
+
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Team);
