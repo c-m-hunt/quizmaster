@@ -1,14 +1,7 @@
 import { Service, MongooseServiceOptions } from 'feathers-mongoose';
 import { Application } from '../../declarations';
 import { Params } from '@feathersjs/feathers';
-
-export interface QuizData {
-  name: string;
-  code: string;
-  rounds?: string[];
-  teams?: string[];
-  joker?: boolean
-}
+import { Quiz as QuizData } from './../../types';
 
 export class Quiz extends Service {
   constructor(options: Partial<MongooseServiceOptions>, app: Application) {

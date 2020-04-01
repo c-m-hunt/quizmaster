@@ -11,7 +11,7 @@ export default function (app: Application) {
   
     email: { type: String, unique: true, lowercase: true },
     password: { type: String },
-  
+    role: { type: String }
   
   }, {
     timestamps: true

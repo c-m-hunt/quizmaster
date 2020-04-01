@@ -1,5 +1,7 @@
 import * as authentication from '@feathersjs/authentication';
 import generateCode from './../../hooks/generate-code';
+import validateEmail from '../../hooks/validate-email';
+import validateRole from '../../hooks/validate-role';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -9,7 +11,11 @@ export default {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [generateCode('accessCode', 8)],
+    create: [
+      validateRole('admin'),
+      validateEmail('captainEmail'),
+      generateCode('accessCode', 8),
+    ],
     update: [],
     patch: [],
     remove: []
