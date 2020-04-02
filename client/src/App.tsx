@@ -4,12 +4,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Login from './components/Login';
 import Team from './components/Team';
-import Status from './components/Status';
+import Nav from './components/Nav';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from 'react-router-dom';
 
 import client from './client';
@@ -22,34 +21,31 @@ client.reAuthenticate().then(response => {
   // Nothing to see here. No user saved
 });
 
+
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
         <Router>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/addteam">Add team</Link>
-              </li>
-            </ul>
-          </nav>
+          <Nav />
           <header className="App-header">
-            <Status />
+
+          </header>
+          <div className='container'>
             <Switch>
               <Route path='/quizzes'>
               </Route>
               <Route path='/login'>
                 <Login />
               </Route>
-              <Route path='/addteam'>
+              <Route path='/quizzes'>
+                <Login />
+              </Route>
+              <Route path='/teams'>
                 <Team />
               </Route>
             </Switch>
-          </header>
+          </div>
         </Router>
       </div>
     </Provider>

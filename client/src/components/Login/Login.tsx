@@ -35,7 +35,7 @@ export default class Login extends React.PureComponent<Props, State> {
     return <main className="login container">
       <div className="row">
         <div className="col-12 col-6-tablet push-3-tablet text-center heading">
-          <h1 className="font-100">Log in or signup</h1>
+          <h1 className="font-100">Log in</h1>
           <p>{this.state.error && this.state.error.message}</p>
         </div>
       </div>
