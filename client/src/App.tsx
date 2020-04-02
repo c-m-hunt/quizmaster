@@ -13,7 +13,7 @@ import {
 } from 'react-router-dom';
 
 import client from './client';
-import { setUser } from './actions';
+import { setUser } from './actions/user';
 
 // Let's try and reauthenticate the user
 client.reAuthenticate().then(response => {

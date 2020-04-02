@@ -3,10 +3,10 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { RootState } from '../../reducers';
 import Status from './Status';
 
-import { logout } from './../../actions';
+import { logout } from './../../actions/user';
 
 const mapStateToProps = (state: RootState) => ({
-  user: state.app.user
+  user: state.user.user
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

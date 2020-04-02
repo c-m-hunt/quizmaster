@@ -3,7 +3,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { RootState } from '../../reducers';
 import Login from './Login';
 
-import { login } from './../../actions';
+import { login } from './../../actions/user';
 
 const mapStateToProps = (state: RootState) => ({
 
