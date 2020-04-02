@@ -1,6 +1,5 @@
 import feathers from '@feathersjs/client';
 import io from 'socket.io-client';
-import auth from '@feathersjs/authentication-client';
 // import rest from '@feathersjs/rest-client';
 
 const host = 'http://localhost:3030'
@@ -14,14 +13,11 @@ const client = feathers();
 const socket = io(host);
 client.configure(feathers.socketio(socket));
 
-client.configure(auth({
-  storageKey: 'auth'
-}))
-
 // @ts-ignore
 client.configure(feathers.authentication({
   // @ts-ignore
-  storage: window.localStorage
+  storage: window.localStorage,
+  storageKey: 'quizmaster-auth'
 }));
 
 export default client;
