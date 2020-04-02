@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Login from './components/Login';
 import Team from './components/Team';
+import Status from './components/Status';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,10 +12,17 @@ import {
   Link
 } from 'react-router-dom';
 
-import { setTeam } from './actions';
+import client from './client';
+import { setUser } from './actions';
+
+// Let's try and reauthenticate the user
+client.reAuthenticate().then(response => {
+  store.dispatch(setUser(response.user));
+}).catch(() => {
+  // Nothing to see here. No user saved
+});
 
 function App() {
-  store.dispatch(setTeam('Test team'));
   return (
     <Provider store={store}>
       <div className="App">
@@ -30,16 +38,17 @@ function App() {
             </ul>
           </nav>
           <header className="App-header">
-              <Switch>
-                <Route path='/quizzes'>
-                </Route>
-                <Route path='/login'>
-                  <Login />
-                </Route>
-                <Route path='/addteam'>
-                  <Team />
-                </Route>
-              </Switch>
+            <Status />
+            <Switch>
+              <Route path='/quizzes'>
+              </Route>
+              <Route path='/login'>
+                <Login />
+              </Route>
+              <Route path='/addteam'>
+                <Team />
+              </Route>
+            </Switch>
           </header>
         </Router>
       </div>

@@ -29,3 +29,12 @@ export const login = (email: string, password: string) =>
   }
 )
 
+export const logout = () =>
+(
+  async (dispatch: Dispatch) => {
+    const response = await client.logout()
+    console.log(response);
+    dispatch(setUser(null));
+    dispatch(setLoginError(null));
+  }
+)
