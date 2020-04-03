@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Login from './components/Login';
 import Team from './components/Team';
+import Quiz from './components/Quiz';
 import Nav from './components/Nav';
 import {
   BrowserRouter as Router,
@@ -34,6 +35,7 @@ function App() {
           <div className='container'>
             <Switch>
               <Route path='/quizzes'>
+                <Quiz />
               </Route>
               <Route path='/login'>
                 <Login />

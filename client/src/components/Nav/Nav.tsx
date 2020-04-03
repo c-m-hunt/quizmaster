@@ -21,7 +21,7 @@ export default class Login extends React.PureComponent<Props, {}> {
           {user &&
             <React.Fragment>
               <li className='nav-item'>
-                <Link className='nav-link' to="/teams">Quizzes</Link>
+                <Link className='nav-link' to="/quizzes">Quizzes</Link>
               </li>
               <li className='nav-item'>
                 <Link className='nav-link' to="/teams">Teams</Link>

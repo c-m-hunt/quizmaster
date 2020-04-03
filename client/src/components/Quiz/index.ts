@@ -1,16 +1,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { RootState } from '../../reducers';
-import Status from './Status';
-
-import { logout } from './../../actions/user';
+import Quiz from './Quiz';
 
 const mapStateToProps = (state: RootState) => ({
-  user: state.user.user
+  quizzes: []
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-  logout
+  // addQuiz
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Status);
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
