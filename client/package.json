@@ -36,7 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint -c .eslintrc.js  --ext .ts --ext .tsx ./src "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +55,10 @@
     ]
   },
   "devDependencies": {
-    "@types/redux-logger": "^3.0.7"
+    "@types/redux-logger": "^3.0.7",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0"
   }
 }

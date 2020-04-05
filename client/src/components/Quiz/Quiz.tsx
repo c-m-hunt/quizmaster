@@ -52,21 +52,23 @@ export default class Quiz extends React.PureComponent<Props, State> {
         </div>
       </div>
       {quizzes &&
-        <table className='table'>
+        <table className='table table-sm'>
           <thead>
             <tr>
               <th>Date</th>
               <th>Name</th>
             </tr>
           </thead>
-        {
-          quizzes.map(quiz => (
-            <tr>
-              <td>{moment(quiz.date).format('ddd DD/MM/YYYY HH:mm')}</td>
-              <td>{quiz.name}</td>
-            </tr>
-          ))
-        }
+          <tbody>
+          {
+            quizzes.map((quiz, i) => (
+              <tr key={i}>
+                <td>{moment(quiz.date).format('ddd DD/MM/YYYY HH:mm')}</td>
+                <td>{quiz.name}</td>
+              </tr>
+            ))
+          }
+          </tbody>
         </table>
       }
     </div>
