@@ -14,6 +14,9 @@ import {
 
 import client from './client';
 import { setUser } from './actions/user';
+import { setAppClient } from './actions';
+
+store.dispatch(setAppClient(client));
 
 // Let's try and reauthenticate the user
 client.reAuthenticate().then(response => {
@@ -40,6 +43,9 @@ function App() {
               <Route path='/login'>
                 <Login />
               </Route>
+              <Route path='/quiz/:id?' render={(match) => {
+                return <div>Show quiz page {match.match.params.id}</div>
+              }} />
               <Route path='/quizzes'>
                 <Login />
               </Route>

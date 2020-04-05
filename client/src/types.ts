@@ -7,6 +7,7 @@ export interface User {
 
 export interface Quiz {
   name: string;
+  date: Date;
   rounds?: string[];
   teams?: [{
     id: string;

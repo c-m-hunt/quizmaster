@@ -4,7 +4,7 @@ import { RootState } from '../../reducers';
 import Quiz from './Quiz';
 
 const mapStateToProps = (state: RootState) => ({
-  quizzes: []
+  quizService: state.app.client?.service('quiz'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({

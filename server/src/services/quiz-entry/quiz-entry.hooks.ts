@@ -1,11 +1,15 @@
 import * as authentication from '@feathersjs/authentication';
+import validateRole from '../../hooks/validate-role';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
 
 export default {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [
+      validateRole('admin'),
+      authenticate('jwt')
+    ],
     find: [],
     get: [],
     create: [],

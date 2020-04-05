@@ -11,6 +11,7 @@ export default function (app: Application) {
   const schema = new Schema({
     name: { type: String, required: true },
     captainEmail: { type: String, required: true },
+    captainName: { type: String, required: true },
     accessCode: { type: String, required: true }
   }, {
     timestamps: true
