@@ -43,15 +43,15 @@ function App() {
               <Route path='/login'>
                 <Login />
               </Route>
-              <Route path='/quiz/:id?' render={(match) => {
+              <PrivateRoute path='/quiz/:id?' render={(match) => {
                 return <div>Show quiz page {match.match.params.id}</div>
               }} />
               <PrivateRoute path='/quizzes'>
                 <Quiz />
               </PrivateRoute>
-              <Route path='/teams'>
+              <PrivateRoute path='/teams'>
                 <Team />
-              </Route>
+              </PrivateRoute>
               <Route path="*">
                 <Jumbotron>
                   <h1>Page not found</h1>

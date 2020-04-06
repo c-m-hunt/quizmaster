@@ -2,13 +2,15 @@ import React, { ReactNode } from 'react';
 import {
   Route,
   Redirect,
+  RouteProps
 } from 'react-router-dom';
 import { User } from '../../../types';
 
-interface PrivateRouteProps {
-  children: ReactNode;
+interface PrivateRouteProps extends RouteProps {
+  children?: ReactNode;
   user?: User;
-  path: string
+  render?: (match: any) => ReactNode;
+  path?: string;
 }
 
 export default ({ children, user, ...rest}: PrivateRouteProps) => {
@@ -17,11 +19,11 @@ export default ({ children, user, ...rest}: PrivateRouteProps) => {
       render={({ location }) => {
         return user ? children : 
         <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
+          to={{
+            pathname: "/login",
+            state: { from: location }
+          }}
+        />
       }}
     />
   );
