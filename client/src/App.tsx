@@ -6,15 +6,19 @@ import Login from './components/Login';
 import Team from './components/Team';
 import Quiz from './components/Quiz';
 import Nav from './components/Nav';
+import PrivateRoute from './components/Internal/PrivateRoute';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 
 import client from './client';
 import { setUser } from './actions/user';
 import { setAppClient } from './actions';
+import { Jumbotron } from 'react-bootstrap';
 
 store.dispatch(setAppClient(client));
 
@@ -24,7 +28,6 @@ client.reAuthenticate().then(response => {
 }).catch(() => {
   // Nothing to see here. No user saved
 });
-
 
 function App() {
   return (
@@ -37,20 +40,22 @@ function App() {
           </header>
           <div className='container'>
             <Switch>
-              <Route path='/quizzes'>
-                <Quiz />
-              </Route>
               <Route path='/login'>
                 <Login />
               </Route>
               <Route path='/quiz/:id?' render={(match) => {
                 return <div>Show quiz page {match.match.params.id}</div>
               }} />
-              <Route path='/quizzes'>
-                <Login />
-              </Route>
+              <PrivateRoute path='/quizzes'>
+                <Quiz />
+              </PrivateRoute>
               <Route path='/teams'>
                 <Team />
+              </Route>
+              <Route path="*">
+                <Jumbotron>
+                  <h1>Page not found</h1>
+                </Jumbotron>
               </Route>
             </Switch>
           </div>
@@ -59,5 +64,7 @@ function App() {
     </Provider>
   );
 }
+
+
 
 export default App;
