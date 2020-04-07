@@ -5,6 +5,7 @@ import store from './store';
 import Login from './components/Login';
 import Team from './components/Team';
 import Quiz from './components/Quiz';
+import QuizDetail from './components/Quiz/QuizDetail';
 import Nav from './components/Nav';
 import PrivateRoute from './components/Internal/PrivateRoute';
 
@@ -44,7 +45,7 @@ function App() {
                 <Login />
               </Route>
               <PrivateRoute path='/quiz/:id?' render={(match) => {
-                return <div>Show quiz page {match.match.params.id}</div>
+                return <QuizDetail quizId={match.match.params.id} />
               }} />
               <PrivateRoute path='/quizzes'>
                 <Quiz />

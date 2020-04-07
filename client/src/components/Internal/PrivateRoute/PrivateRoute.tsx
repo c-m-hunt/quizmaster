@@ -14,17 +14,22 @@ interface PrivateRouteProps extends RouteProps {
 }
 
 export default ({ children, user, ...rest}: PrivateRouteProps) => {
+  let render = rest.render;
+  if (!render) {
+    render=({ location }) => {
+      return children
+      // return user ? children : 
+      // <Redirect
+      //   to={{
+      //     pathname: "/login",
+      //     state: { from: location }
+      //   }}
+      // />
+    }
+  }
+  rest = { ...rest, render }
+
   return (
-    <Route {...rest}
-      render={({ location }) => {
-        return user ? children : 
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: location }
-          }}
-        />
-      }}
-    />
+    <Route {...rest} />
   );
 }

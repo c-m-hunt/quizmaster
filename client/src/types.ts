@@ -1,5 +1,11 @@
 export type Role = 'admin' | 'questionmaster' | `player`;
 
+export interface DBObj {
+  _id: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface User {
   email: string;
   role: Role;

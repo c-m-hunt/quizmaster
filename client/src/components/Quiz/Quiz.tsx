@@ -1,15 +1,16 @@
 import React from 'react';
-import { Quiz as IQuiz } from './../../types';
+import { Quiz as IQuiz, DBObj } from './../../types';
 import AddQuiz from './AddQuiz';
 import { Service } from '@feathersjs/feathers';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 type Props = {
   quizService?: Service<any>;
 }
 
 type State = {
-  quizzes?: IQuiz[]
+  quizzes?: (IQuiz & DBObj)[]
 }
 
 export default class Quiz extends React.PureComponent<Props, State> {
@@ -57,6 +58,7 @@ export default class Quiz extends React.PureComponent<Props, State> {
             <tr>
               <th>Date</th>
               <th>Name</th>
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -65,6 +67,9 @@ export default class Quiz extends React.PureComponent<Props, State> {
               <tr key={i}>
                 <td>{moment(quiz.date).format('ddd DD/MM/YYYY HH:mm')}</td>
                 <td>{quiz.name}</td>
+                <td>
+                  <Link to={`/quiz/${quiz._id}`}>View</Link>
+                </td>
               </tr>
             ))
           }
